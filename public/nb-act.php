@@ -20,7 +20,7 @@
     require '../vendor/autoload.php';
 
     use jokodm\Datamining\Dataset\Demo\PembelianKomputer;
-    use jokodm\Datamining\Klasifikasi\NaiveBayes;
+    use jokodm\Datamining\Klasifikasi\DecisionTree;
 
     $usia = $_POST['usia'];
     $pendapatan = $_POST['pendapatan'];
@@ -29,7 +29,7 @@
 
     $dataset = new PembelianKomputer();
 
-    $klasifikasi = new NaiveBayes();
+    $klasifikasi = new DecisionTree();
     $klasifikasi->train($dataset->getSamples(), $dataset->getTargets());
 
     $prediksi = $klasifikasi->predict([$usia, $pendapatan, $pelajar, $kredit]);
